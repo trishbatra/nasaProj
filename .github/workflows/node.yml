@@ -1,18 +1,17 @@
-name: nasa-project-ci
+name: NASA API CI
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        name: Use node.js version 16
-       uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-      -run: npm install
-      -run: npm run build --prefix client
-
+      - name: Use Node.Js v18.7.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - run: npm install
+      - run: npm run build --prefix client
